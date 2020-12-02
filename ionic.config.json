@@ -1,0 +1,7 @@
+{
+  "name": "myqrbar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
