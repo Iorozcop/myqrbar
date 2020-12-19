@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="amarillopastel">
+    <ion-title>MyQrBar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="imagenfondo ion-text-center">
+  <ion-content class="imagenfondoInicio">
+  
+    <img *ngIf ='verLogo' src="../../../assets/img/logomiqrbar.png"/>
+    <ion-card-header >
+      <ion-card-title>Bienvenido a MiQrBar</ion-card-title>
+      <ion-card-subtitle>¿Qué quieres hacer?</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="ion-padding">
+      <ion-button  color="turquesa" (click)="LeerCodigo()">Scannear</ion-button>
+      <ion-button  color="turquesa" (click)="mostrar()">Mis bares</ion-button> 
+    </ion-card-content>
+
+    <!--Dato escaneado-->
+  <ion-card *ngIf='botonVer'>
+    <img src="../../../assets/img/nomnom.png"/>
+       <ion-card-header>
+         <ion-card-subtitle>Código escaneado: </ion-card-subtitle>
+         <ion-card-title>{{ datoscaneado }}</ion-card-title>
+         <br>
+         <ion-button color="turquesa" *ngIf='botonVer' (click)="ver(datoscaneado)">
+          Ver
+        </ion-button>
+        <ion-button color="turquesa" *ngIf='botonVer' (click)="guardarBar(datoscaneado)">
+          Guardar
+        </ion-button>
+        <ion-button color="turquesa" *ngIf='botonVer' (click)="salir()">
+          Salir
+        </ion-button>
+       </ion-card-header>
+     </ion-card>
+
+     <!--Lista de bares-->
+  <ion-card *ngIf="botonMostrar">
+   
+      <ion-item-divider>
+        <ion-icon name="restaurant" color="turquesa" class="ion-padding"></ion-icon>
+        <ion-card-subtitle>MIS BARES ALMACENADOS</ion-card-subtitle>
+      </ion-item-divider>
+
+      <ion-item-divider class="ion-padding">
+        <ion-input type="text" name="nombre" placeholder="inserte nombre a buscar" [(ngModel)]= "nombre"></ion-input>
+      </ion-item-divider>
+      
+
+          <ion-item *ngFor="let bar of bares | filtro:nombre">
+          
+            <ion-card-header>
+              <ion-card-title>{{bar.nombre}}</ion-card-title>
+              <ion-card-subtitle>{{'tlf: '+ bar.tlf}}</ion-card-subtitle> 
+            </ion-card-header>
+            
+            <ion-content class="ion-text-end ion-text-botton ion-padding-top">
+              <ion-button (click)="editar(bar)" color="turquesa" >
+                Ver
+              </ion-button>
+              <ion-button (click)="eliminar(bar)" color="turquesa">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-content>
+
+        </ion-item>
+      
+      <ion-item>
+          <ion-button (click)="salir()" color="turquesa" slot="end">
+          Salir
+          </ion-button>
+      </ion-item>
+    </ion-card>
+  </ion-content>
+ 
+</ion-content>

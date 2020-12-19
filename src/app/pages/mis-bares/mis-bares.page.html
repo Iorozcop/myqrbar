@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="amarillopastel">
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="imagenfondo">
+    
+     <!--CARD-->
+  <ion-card>
+    <ion-item-divider>
+      <img src="../../../assets/img/burger.png">
+    </ion-item-divider>
+    
+    <ion-item-divider>
+      <ion-card-header>
+        <ion-card-subtitle>Nombre:</ion-card-subtitle>
+        <ion-input type="text" placeholder="Inserte nombre" [(ngModel)]= "dato.nombre"></ion-input>
+
+        <ion-card-subtitle>Teléfono:</ion-card-subtitle>
+        <ion-input type="number" placeholder="inserte teléfono" [(ngModel)]= "dato.tlf"></ion-input>
+
+        <ion-card-subtitle>Descripción:</ion-card-subtitle>
+        <ion-textarea type="text" rows="4" placeholder="inserte descripción" [(ngModel)]= "dato.descripcion"></ion-textarea>
+
+      </ion-card-header>
+      </ion-item-divider>
+    <div class="ion-text-center ion-padding">
+    
+      <ion-button (click)="modificar()" color="turquesa">
+      Editar
+      </ion-button>
+
+      <ion-button (click)="verContenido(dato.url)" color="turquesa">
+        Ver
+      </ion-button> 
+
+      <ion-button (click)="compartir(dato)" color="turquesa">
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button> 
+
+      <ion-button [href]="'tel:' + dato.tlf" color="turquesa">
+        <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+      </ion-button> 
+
+    </div>
+  </ion-card>
+</ion-content>
